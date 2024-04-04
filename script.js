@@ -1,44 +1,58 @@
-const btnAdd= document.querySelector(".btn-add")
-const divContainer= document.getElementById('container') 
-btnAdd.addEventListener("click" ,makeSquare);
+const divContainer = document.getElementById('main-container')
+const btnAdd = document.querySelector(".btn-add")
+btnAdd.addEventListener("click", makeSquare);
 
-let no_of_square;
 
-getInput =()=>{
-    no_of_square= document.getElementById('no_of_squares').value;
-    if(no_of_square > 100){
-        console.log('invalid')
-        return 
-    }
-    return no_of_square 
+var slider = document.getElementById("myRange")
+var output = document.getElementById("demo")
+output.innerHTML = slider.value; // Display
+
+slider.oninput = function () {
+    output.innerHTML = this.value;
+    square = this.value;
 }
 
-
-function makeSquare(){
-    for(let i=0; i< getInput() ; i++){
-        // console.log(no_of_square);
-        const newDiv= document.createElement('div')
+let square=8;
+function makeSquare() {
+    divContainer.innerHTML = "";
+    for (let i = 0; i < square*square; i++) {
+        console.log(square);
+        const newDiv = document.createElement('div')
         newDiv.classList.add('square');
         divContainer.appendChild(newDiv)
     }
+    addEventListen();
+}
+
+function addEventListen() {
+    let boxes = [...document.querySelectorAll('.square')]
+    let draw = false;
+    boxes.forEach(box => {
+        // box.addEventListener('mousedown', () => {
+        //     box.style.backgroundColor = 'drakgray'
+        //     draw = true;
+        // })
+
+        
+        // box.addEventListener('mouseup', () => {
+        //     draw = false;
+        // });
+
+        box.addEventListener('mouseover', () =>{
+            box.style.backgroundColor = 'darkgray'
+            // draw = true;
+        });
+
+        // box.addEventListener('mouseout', () =>{
+        //     if(draw){
+        //         box.style.backgroundColor = 'blue'
+        //         // draw = true;
+        //     }
+        // });
+    });
 }
 
 
 
 
-
-// for(let i=0; i< no_of_square ; i++){
-//     console.log(no_of_square);
-//     const newDiv= document.createElement('div')
-//     newDiv.classList.add('square');
-//     divContainer.appendChild(newDiv)
-// }   
-
-
-// function addNew(){
-//     const newDiv= document.createElement("div")
-//     newDiv.classList.add('box')
-//     divContainer.appendChild(newDiv)
-//     console.log("add");
-// }
 
