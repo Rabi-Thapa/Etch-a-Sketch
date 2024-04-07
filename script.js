@@ -1,17 +1,63 @@
 const divContainer = document.getElementById('main-container')
 const btnAdd = document.querySelector(".btn-add")
+
+const btnErase = document.querySelector(".btn-erase")
 const btnBlue = document.querySelector(".btn-blue")
+const btnRed = document.querySelector(".btn-red")
+const btnYellow = document.querySelector(".btn-yellow")
+const btnGreen = document.querySelector(".btn-green")
+
 btnAdd.addEventListener("click", makeSquare);
 
-btnBlue.addEventListener('click', chooseColor)
+btnErase.addEventListener("click", erase);
+btnBlue.addEventListener('click', blueCol)
+btnRed.addEventListener('click', redCol)
+btnYellow.addEventListener('click', yellowCol)
+btnGreen.addEventListener('click', greenCol)
 
+function erase(){
+    let boxes = [...document.querySelectorAll('.square')]
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', () =>{
+            box.style.backgroundColor = 'whitesmoke'
+        });
+    });
+}
+function blueCol(){
+    let boxes = [...document.querySelectorAll('.square')]
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', () =>{
+            box.style.backgroundColor = 'blue'
+        });
+    });
+}
 
-function chooseColor(){
+function redCol(){
     let boxes = [...document.querySelectorAll('.square')]
 
     boxes.forEach(box => {
         box.addEventListener('mouseover', () =>{
-            box.style.backgroundColor = 'blue'
+            box.style.backgroundColor = '#dc143b'
+        });
+    });
+}
+
+
+function yellowCol(){
+    let boxes = [...document.querySelectorAll('.square')]
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', () =>{
+            box.style.backgroundColor = '#FFD700'
+        });
+    });
+}
+
+function greenCol(){
+    let boxes = [...document.querySelectorAll('.square')]
+
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', () =>{
+            box.style.backgroundColor = '#04AA6D'
         });
     });
 }
@@ -25,7 +71,7 @@ slider.oninput = function () {
     square = this.value;
 }
 
-let square=16;
+let square=34;
 function makeSquare() {
     divContainer.innerHTML = "";
     for (let i = 0; i < square*square; i++) {
